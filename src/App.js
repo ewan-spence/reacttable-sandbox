@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import { Tab, Tabs } from 'react-bootstrap';
+
 import './App.css';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import BasicTablePage from './Pages/BasicTablePage';
+
 function App() {
+  const [activeTab, setActiveTab] = useState(1);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Tabs
+        activeKey={activeTab}
+        onSelect={setActiveTab}
+      >
+        <Tab eventKey={1} title="Basic Table">
+          <BasicTablePage />
+        </Tab>
+      </Tabs>
     </div>
   );
 }
